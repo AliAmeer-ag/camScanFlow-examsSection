@@ -58,7 +58,7 @@ export default {
 
   data() {
     return {
-      currentStep: ref(2),
+      currentStep: ref(0),
       steps: [
         {
           name: "terms-and-conditions",
