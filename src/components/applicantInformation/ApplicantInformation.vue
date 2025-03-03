@@ -178,7 +178,7 @@
 
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-import { useForm, Form, Field, ErrorMessage } from "vee-validate";
+import { Form, Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
 
 // Form state and router
@@ -213,9 +213,9 @@ const validationSchema = yup.object({
   note: yup.string().required("Note is required."),
 });
 
-const { handleSubmit } = useForm({
-  validationSchema,
-});
+// const { handleSubmit } = useForm({
+//   validationSchema,
+// });
 
 const onSubmit = (values: any) => {
   console.log("Form submitted with values: ", values);
