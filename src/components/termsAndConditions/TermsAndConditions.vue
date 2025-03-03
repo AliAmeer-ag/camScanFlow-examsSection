@@ -96,8 +96,17 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 
+const props = defineProps({
+  currentStep: {
+    type: Number,
+    required: true,
+  },
+});
+
+const emit = defineEmits(["updateCurrentStep"]);
+
 const handleAgree = () => {
-  router.push("applicant-information");
+  emit("updateCurrentStep", props.currentStep + 1);
 };
 
 const handleDisagree = () => {

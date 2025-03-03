@@ -53,9 +53,9 @@
       >
         <div class="col-span-1">
           <label for="country">Country</label>
-          <Field id="country" name="country" as="select" >
+          <Field id="country" name="country" as="select">
             <option value="">please select country</option>
-            <option value="iraq" selected >Iraq</option>
+            <option value="iraq" selected>Iraq</option>
             <option value="iraq">United Arab Emirates</option>
           </Field>
           <ErrorMessage name="country" class="text-red-500 text-xs" />
@@ -184,6 +184,15 @@ import * as yup from "yup";
 // Form state and router
 const router = useRouter();
 
+const props = defineProps({
+  currentStep: {
+    type: Number,
+    required: true,
+  },
+});
+
+const emit = defineEmits(["updateCurrentStep"]);
+
 // Yup validation schema
 const validationSchema = yup.object({
   firstName: yup.string().required("First name is required."),
@@ -210,7 +219,7 @@ const { handleSubmit } = useForm({
 
 const onSubmit = (values: any) => {
   console.log("Form submitted with values: ", values);
-  router.push("/applicant-information");
+  emit("updateCurrentStep", props.currentStep + 1);
 };
 
 const handleCancel = () => {
